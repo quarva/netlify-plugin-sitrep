@@ -1,5 +1,5 @@
 {
-  "name": "netlify-plugin-sitrep",
+  "name": "@quarva/netlify-plugin-sitrep",
   "version": "0.0.4",
   "description": "A Netlify build plugin to display debug information in dev or staging environments",
   "main": "index.js",
