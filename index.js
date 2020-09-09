@@ -52,7 +52,7 @@ module.exports = {
         console.log('Building the tag UI...')
 
         let data = {build_id: BUILD_ID, context: CONTEXT, commit_ref: COMMIT_REF, deploy_id: DEPLOY_ID};
-        let output = ejs.renderFile(__dirname + './templates/template.ejs', data, function(err, data) {
+        let output = ejs.renderFile(__dirname + '/templates/template.ejs', data, function(err, data) {
             if (err) {
                 return failPlugin ('Something went wrong when processing the display template.');
             }

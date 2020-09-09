@@ -4,7 +4,7 @@
   "description": "A Netlify build plugin to display debug information in dev or staging environments",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "netlify-build"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,9 @@
     "url": "https://github.com/quarva/netlify-plugin-sitrep/issues"
   },
   "homepage": "https://github.com/quarva/netlify-plugin-sitrep#readme",
-  "devDependencies": {},
+  "devDependencies": {
+    "@netlify/build": "^3.3.5"
+  },
   "dependencies": {
     "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
