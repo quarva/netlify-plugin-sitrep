@@ -1,0 +1,6 @@
+name: 'netlify-plugin-sitrep'
+inputs:
+  - name: allow_prod
+    description: If true, debug data will be injected in the production context.
+    required: true
+    default: false
