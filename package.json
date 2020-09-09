@@ -1,7 +1,7 @@
 {
   "name": "@quarva/netlify-plugin-sitrep",
   "version": "0.0.4",
-  "description": "A Netlify build plugin to display debug information in dev or staging environments",
+  "description": "A Netlify build plugin that injects build and deploy information into the DOM for debugging.",
   "main": "index.js",
   "scripts": {
     "build": "netlify-build"

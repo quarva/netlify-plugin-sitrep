@@ -1,0 +1,9 @@
+# Required when developing locally
+# Must be real values retrieved from Netlify
+BUILD_SITREP_TOKEN=
+SITE_ID=
+
+# These must be present but the values can be arbitrary
+BUILD_ID=5f58f7284e7bf70007a00335
+DEPLOY_ID=5f58f7284e7bf70007a00337
+COMMIIT_REF=625e84ba39ccf4a9fce3068ebc792ba31bb3e756
