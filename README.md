@@ -11,13 +11,13 @@ A Netlify build plugin that injects build and deploy information into the DOM fo
 
 The plugin accesses Netlify's postprocessing snippet injection using the Netlify API, so we need to provide an access token.
 
-1. Sign in to Netlify and navigate to User Settings -> [Applications](https://app.netlify.com/user/applications)
+1. Sign in to Netlify and navigate to User Settings → [Applications](https://app.netlify.com/user/applications)
 2. Generate a new personal access token
 3. Store that personal access token as an environment variable called `BUILD_SITREP_TOKEN` in the site(s) you want to use the plugin with.
 
 ### Install
 
-```
+```bash
 npm install --save "@quarva/netlify-plugin-sitrep"
 ```
 
@@ -28,8 +28,7 @@ npm install --save "@quarva/netlify-plugin-sitrep"
 package = "@quarva/netlify-plugin-sitrep"
 ```
 
-Note: The `[[plugins]]` line is required for each plugin, even if you have other
-plugins in your `netlify.toml` file already.
+Note: The `[[plugins]]` line is required for each plugin, even if you have other plugins in your `netlify.toml` file already.
 
 ### Configuration
 

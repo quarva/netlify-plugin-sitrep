@@ -4,7 +4,8 @@
   "description": "A Netlify build plugin that injects build and deploy information into the DOM for debugging.",
   "main": "index.js",
   "scripts": {
-    "build": "netlify-build"
+    "build": "netlify-build",
+    "test": "echo \"No test specified\""
   },
   "repository": {
     "type": "git",
