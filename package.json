@@ -1,6 +1,6 @@
 {
   "name": "@quarva/netlify-plugin-sitrep",
-  "version": "0.0.5",
+  "version": "0.0.6-2",
   "description": "A Netlify build plugin that injects build and deploy information into the DOM for debugging.",
   "main": "index.js",
   "scripts": {
@@ -27,7 +27,12 @@
   },
   "homepage": "https://github.com/quarva/netlify-plugin-sitrep#readme",
   "devDependencies": {
-    "@netlify/build": "^3.3.5"
+    "@netlify/build": "^3.3.5",
+    "eslint": "^7.8.1",
+    "eslint-plugin-spellcheck": "0.0.17"
+  },
+  "engines": {
+    "node": ">=10.22.0"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
