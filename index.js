@@ -1,6 +1,3 @@
-// Netlify doesn't expose live vars in the CLI, so we need to 
-// configure SITE_ID and BUILD_SITREP_TOKEN locally for development
-require('dotenv').config()
 let ejs = require('ejs');
 
 const fetch = require('node-fetch');
@@ -29,6 +26,7 @@ module.exports = {
     // an error or misconfiguration.
     
     onPreBuild: ({ inputs, utils: { build: { failPlugin } } }) => {
+
         // Check inputs
         global.verbose = inputs.verbose;
         let allowProd = inputs.allow_prod;
@@ -131,10 +129,8 @@ module.exports = {
 
             if (status == 201) {
                 if (verbose) console.log('Snippet was added.');
-                let snippetAction = 'added'
             } else if (status == 200) {
                 if (verbose) console.log('Snippet was updated.');
-                let snippetAction = 'updated'
             } else {
                 return failPlugin('Snippet injection failed on an API error. Netlify said: ' + status + statusText);
             }
