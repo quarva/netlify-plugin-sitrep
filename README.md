@@ -3,6 +3,8 @@
 
 A Netlify build plugin that injects build and deploy information into the DOM for debugging.
 
+[Live demo](https://netlify-build-sitrep.netlify.app)
+
 ![Demo](https://github.com/Quarva/quarva.github.io/blob/master/img/netlify-build-sitrep/demo.gif?raw=true)
 
 ## Usage

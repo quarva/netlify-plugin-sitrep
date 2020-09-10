@@ -1,0 +1,10 @@
+# include .gitignore 
+# npm won't use it if .npmignore is present
+.env
+.DS_Store
+node_modules
+.netlify
+/netlify.toml
+
+# exclude from npm only
+/demo
