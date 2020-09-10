@@ -26,7 +26,7 @@ module.exports = {
     // an error or misconfiguration.
     
     onPreBuild: ({ inputs, utils: { build: { failPlugin } } }) => {
-        console.log(COMMIT_REF);
+
         // Check inputs
         global.verbose = inputs.verbose;
         let allowProd = inputs.allow_prod;
