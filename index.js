@@ -24,6 +24,10 @@ let authString = 'Bearer ' + authToken
 let baseURL = `https://api.netlify.com/api/v1/sites/${SITE_ID}/snippets`
 
 module.exports = {
+    // Note: we could do all of this in a single event handlerr (e.g. onSuccess) but
+    // we split it up to save as much execution time as possible in the event of
+    // an error or misconfiguration.
+    
     onPreBuild: ({ inputs, utils: { build: { failPlugin } } }) => {
         // Check inputs
         let verbose = inputs.verbose;
