@@ -1,5 +1,6 @@
 # netlify-plugin-sitrep
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ed60732d-7271-432e-aada-70397b8f8ccf/deploy-status)](https://app.netlify.com/sites/netlify-build-sitrep/deploys) [![npm version](https://badge.fury.io/js/%40quarva%2Fnetlify-plugin-sitrep.svg)](https://badge.fury.io/js/%40quarva%2Fnetlify-plugin-sitrep)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FQuarva%2Fnetlify-plugin-sitrep.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FQuarva%2Fnetlify-plugin-sitrep?ref=badge_shield)
 
 A Netlify build plugin that injects build and deploy information into the DOM for debugging.
 
@@ -45,3 +46,6 @@ package = "@quarva/netlify-plugin-sitrep"
     "verbose" = ""
     # If true, the plugin will write each step to the deploy log.
 ```
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FQuarva%2Fnetlify-plugin-sitrep.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FQuarva%2Fnetlify-plugin-sitrep?ref=badge_large)
