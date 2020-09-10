@@ -1,10 +1,10 @@
 # Netlify doesn't support context-dependent plugins yet, so for now
-# we manually switch between local and npm versions during dev deploys
+# we manually switch plugin vesions during dev deploys
 
 # Development
 [context.branch-deploy]
 [[plugins]]
-package = "../"
+package = "@quarva/netlify-plugin-sitrep"
   [plugins.inputs]  
     "allow_prod" = ""
     "verbose" = "true"
