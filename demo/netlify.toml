@@ -1,0 +1,5 @@
+[[plugins]]
+package = "@quarva/netlify-plugin-sitrep"
+  [plugins.inputs]  
+    "allow_prod" = "true"
+    # If true, the plugin will work in production.
