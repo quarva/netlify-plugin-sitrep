@@ -55,7 +55,9 @@ module.exports = {
 
         if (verbose) console.log('Building the tag UI...')
 
-        let data = {build_id: BUILD_ID, context: CONTEXT, commit_ref: COMMIT_REF, deploy_id: DEPLOY_ID};
+        let COMMIT_REF_truncated = COMMIT_REF.substring(COMMIT_REF.length - 10);
+
+        let data = {build_id: BUILD_ID, context: CONTEXT, commit_ref: COMMIT_REF_truncated, deploy_id: DEPLOY_ID};
         ejs.renderFile(__dirname + '/templates/template.ejs', data, function(err, data) {
             if (err) {  
                 return failPlugin ('Something went wrong when processing the display template: ' + err);
