@@ -1,5 +1,5 @@
 # Netlify doesn't support context-dependent plugins yet, so for now
-# we manually switch plugin vesions during dev deploys
+# we manually switch plugin configs during dev deploys
 
 # Development
 [context.branch-deploy]
@@ -15,3 +15,4 @@ package = "@quarva/netlify-plugin-sitrep"
 # package = "@quarva/netlify-plugin-sitrep"
 #   [plugins.inputs]  
 #     "allow_prod" = "true"
+#     "verbose" = ""

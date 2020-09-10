@@ -30,8 +30,10 @@ module.exports = {
     
     onPreBuild: ({ inputs, utils: { build: { failPlugin } } }) => {
         // Check inputs
-        let verbose = inputs.verbose;
+        global.verbose = inputs.verbose;
         let allowProd = inputs.allow_prod;
+
+        if (verbose) console.log('Verbose mode enabled');
 
         // Make sure the token has been set
         // TODO this probably needs to be more robust
@@ -50,8 +52,6 @@ module.exports = {
     },
 
     onBuild({ inputs, utils: { build: { failPlugin } } }) {
-        // Check inputs
-        let verbose = inputs.verbose;
 
         if (verbose) console.log('Building the tag UI...')
 
@@ -82,8 +82,6 @@ module.exports = {
         },
 
     async onSuccess({ inputs, utils: { build: { failPlugin, failBuild }, status: { show } } }) {
-        // Check inputs
-        let verbose = inputs.verbose;
 
         if (verbose) console.log('Preparing snippet injection...');
 
