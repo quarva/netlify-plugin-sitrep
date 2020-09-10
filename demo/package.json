@@ -1,0 +1,15 @@
+{
+  "name": "@quarva/netlify-plugin-sitrep-demo",
+  "version": "1.0.0",
+  "description": "Demo for @quarva/netlify-plugin-sitrep",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "author": "Quarva <hello@quarva.com> (https://www.quarva.com/",
+  "license": "MIT",
+  "dependencies": {
+    "@11ty/eleventy": "^0.11.0",
+    "@quarva/netlify-plugin-sitrep": "0.0.5"
+  }
+}
