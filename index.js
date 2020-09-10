@@ -141,8 +141,8 @@ module.exports = {
 
             return show ({
               title: 'Sitrep injected successfully',
-              summary: 'You should be able to see it on <a href="' + DEPLOY_URL + '">your site</a>.',
-              text: 'Injected:\nBuild ID: ' + BUILD_ID + '\nSite ID: ' + SITE_ID + '\nCommit: ' + COMMIT_REF + '\nDeploy ID: ' + DEPLOY_ID + '',
+              summary: 'You should be able to see it on ' + DEPLOY_URL,
+              text: 'Build ID: ' + BUILD_ID + ' | Site ID: ' + SITE_ID + ' | Commit: ' + COMMIT_REF + ' | Deploy ID: ' + DEPLOY_ID + '',
             })
         } 
           catch (error) {
