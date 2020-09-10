@@ -28,7 +28,8 @@
   "homepage": "https://github.com/quarva/netlify-plugin-sitrep#readme",
   "devDependencies": {
     "@netlify/build": "^3.3.5",
-    "eslint": "^7.8.1"
+    "eslint": "^7.8.1",
+    "eslint-plugin-spellcheck": "0.0.17"
   },
   "engines": {
     "node": ">=10.22.0"

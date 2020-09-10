@@ -1,12 +1,12 @@
 // Netlify doesn't expose live vars in the CLI, so we need to 
-// confgure SITE_ID and BUILD_SITREP_TOKEN locally for development
+// configure SITE_ID and BUILD_SITREP_TOKEN locally for development
 require('dotenv').config()
 let ejs = require('ejs');
 
 const fetch = require('node-fetch');
 const {
     env: {
-        // Must be configured by the user as a Netlify environment var
+        // Must be configured by the user as a Netlify build environment var
         BUILD_SITREP_TOKEN,
         // These are provided by Netlify and are read-only
         CONTEXT,
@@ -24,7 +24,7 @@ let authString = 'Bearer ' + authToken
 let baseURL = `https://api.netlify.com/api/v1/sites/${SITE_ID}/snippets`
 
 module.exports = {
-    // Note: we could do all of this in a single event handlerr (e.g. onSuccess) but
+    // Note: we could do all of this in a single event handler (e.g. onSuccess) but
     // we split it up to save as much execution time as possible in the event of
     // an error or misconfiguration.
     
@@ -42,7 +42,7 @@ module.exports = {
         }
 
         // Make sure we don't run in disallowed contexts
-        if (verbose) console.log('Verfying allowable contexts...');
+        if (verbose) console.log('Verifying allowable contexts...');
         
         if (!allowProd && (CONTEXT == 'production')) {
             return failPlugin('Production debug is disabled. This can be changed in netlify.toml');
@@ -51,12 +51,12 @@ module.exports = {
         }
     },
 
-    onBuild({ inputs, utils: { build: { failPlugin } } }) {
+    onBuild({ utils: { build: { failPlugin } } }) {
 
         if (verbose) console.log('Building the tag UI...')
 
         let data = {build_id: BUILD_ID, context: CONTEXT, commit_ref: COMMIT_REF, deploy_id: DEPLOY_ID};
-        let output = ejs.renderFile(__dirname + '/templates/template.ejs', data, function(err, data) {
+        ejs.renderFile(__dirname + '/templates/template.ejs', data, function(err, data) {
             if (err) {  
                 return failPlugin ('Something went wrong when processing the display template: ' + err);
             }
@@ -64,18 +64,18 @@ module.exports = {
             let renderToBase64 = new Buffer.from(data);
             let encodedRender = renderToBase64.toString('base64');
             
-            var tagOpen =   '<script>' +
+            let tagOpen =   '<script>' +
                             'window.onload = function() {' +
                             'var ifrm = document.createElement(\'iframe\');' +
                             'ifrm.setAttribute(\'id\', \'ifrm\');' +
                             'ifrm.setAttribute(\'style\', \'position: fixed; bottom: 0; right: 0; border: 0;\');' +
                             'document.body.appendChild(ifrm);'
                 
-            var tagData =   'ifrm.setAttribute(\'src\', \'data:text/html;base64,' + encodedRender + '\');'
-            var tagEnd =    '}' +
+            let tagData =   'ifrm.setAttribute(\'src\', \'data:text/html;base64,' + encodedRender + '\');'
+            let tagClose =    '}' +
                             '</script>'
 
-        global.tagComplete = tagOpen + tagData + tagEnd
+        global.tagComplete = tagOpen + tagData + tagClose
         if (verbose) console.log('Successfully built the tag UI.')
 
         });
@@ -95,7 +95,7 @@ module.exports = {
             })
 
             .then((json) => {
-                var findSnippet = json.filter(function(item) {
+                let findSnippet = json.filter(function(item) {
                     return item.title == "netlify-build-sitrep";
                 });
                 
@@ -105,7 +105,7 @@ module.exports = {
                     extendedURL = baseURL;
                     fetchMethod = 'POST'
                 } else {
-                    var snippetID = findSnippet[0]['id'];
+                    let snippetID = findSnippet[0]['id'];
                     extendedURL = baseURL + '/' + snippetID;
                     if (verbose) console.log('Found snippet with id: ' + snippetID);
                     fetchMethod = 'PUT'
@@ -139,7 +139,7 @@ module.exports = {
 
             return show ({
               title: 'Sitrep injected successfully',
-              summary: 'You should be able to see it on <a href=\"' + DEPLOY_URL + '\">your site</a>.',
+              summary: 'You should be able to see it on <a href="' + DEPLOY_URL + '">your site</a>.',
               text: 'Injected:\nBuild ID: ' + BUILD_ID + '\nSite ID: ' + SITE_ID + '\nCommit: ' + COMMIT_REF + '\nDeploy ID: ' + DEPLOY_ID + '',
             })
         } 

@@ -8,3 +8,4 @@ node_modules
 
 # exclude from npm only
 /demo
+/.eslintrc.yml
