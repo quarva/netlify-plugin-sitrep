@@ -1,6 +1,3 @@
-// Netlify doesn't expose live vars in the CLI, so we need to 
-// configure SITE_ID and BUILD_SITREP_TOKEN locally for development
-require('dotenv').config()
 let ejs = require('ejs');
 
 const fetch = require('node-fetch');
@@ -29,6 +26,7 @@ module.exports = {
     // an error or misconfiguration.
     
     onPreBuild: ({ inputs, utils: { build: { failPlugin } } }) => {
+        console.log(COMMIT_REF);
         // Check inputs
         global.verbose = inputs.verbose;
         let allowProd = inputs.allow_prod;

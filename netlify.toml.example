@@ -1,0 +1,15 @@
+[[plugins]]
+package = "."
+  [plugins.inputs]
+    "allow_prod" = "true"
+    "verbose" = "true"
+
+[build.environment]
+# Required when developing locally
+# Must be real values retrieved from Netlify
+BUILD_SITREP_TOKEN=""
+SITE_ID=""
+
+# These must be present but the values can be arbitrary
+BUILD_ID=""
+DEPLOY_ID=""
