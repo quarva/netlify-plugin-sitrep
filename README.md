@@ -40,7 +40,7 @@ By default, the plugin won't inject any data in a production context. You can ad
 [[plugins]]
 package = "@quarva/netlify-plugin-sitrep"
   [plugins.inputs]  
-    "allow_prod" = "false"
+    "allow_prod" = ""
     # If true, the plugin will inject data even when run in a production context.
     "verbose" = ""
     # If true, the plugin will write each step to the deploy log.
