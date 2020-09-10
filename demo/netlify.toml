@@ -2,17 +2,17 @@
 # we manually switch plugin configs during dev deploys
 
 # Development
-[context.branch-deploy]
-[[plugins]]
-package = "@quarva/netlify-plugin-sitrep"
-  [plugins.inputs]  
-    "allow_prod" = ""
-    "verbose" = "true"
-
-# Production
-# [context.production]
+# [context.branch-deploy]
 # [[plugins]]
 # package = "@quarva/netlify-plugin-sitrep"
 #   [plugins.inputs]  
-#     "allow_prod" = "true"
-#     "verbose" = ""
+#     "allow_prod" = ""
+#     "verbose" = "true"
+
+# Production
+[context.production]
+[[plugins]]
+package = "@quarva/netlify-plugin-sitrep"
+  [plugins.inputs]  
+    "allow_prod" = "true"
+    "verbose" = ""
