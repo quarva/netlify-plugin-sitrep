@@ -10,7 +10,7 @@ To see it in action, just take a look at the bottom right corner of this page. Y
 
 ## While you're here...
 
-Consider donating to [Public Knowledge](https://www.publicknowledge.org/donate/). They do important advocacy work on issues including copyright, net neutrality, and privacy. You can learn moe about them [here](https://www.publicknowledge.org/about-us/).
+Consider donating to [Public Knowledge](https://www.publicknowledge.org/donate/). They do important advocacy work on issues including copyright, net neutrality, and privacy. You can learn more about them [here](https://www.publicknowledge.org/about-us/).
 
 ---
 
