@@ -21,7 +21,11 @@ The plugin accesses Netlify's postprocessing snippet injection using the Netlify
 ### Install
 
 ```bash
-npm install --save "@quarva/netlify-plugin-sitrep"
+npm install --save @quarva/netlify-plugin-sitrep
+
+or 
+
+yarn add @quarva/netlify-plugin-sitrep
 ```
 
 ### Add the plugin to `netlify.toml`
