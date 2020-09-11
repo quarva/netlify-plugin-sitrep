@@ -134,7 +134,7 @@ module.exports = {
                 console.log('Snippet was added.');
             } else if (verbose && (status == 200)) {
                 console.log('Snippet was updated.');
-            } else {
+            } else if (status !== 200 && 201) {
                 return failPlugin('Snippet injection failed on an API error. Netlify said: ' + status + statusText);
             }
 
