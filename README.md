@@ -1,5 +1,5 @@
 # netlify-plugin-sitrep
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ed60732d-7271-432e-aada-70397b8f8ccf/deploy-status)](https://app.netlify.com/sites/netlify-build-sitrep/deploys) [![npm version](https://badge.fury.io/js/%40quarva%2Fnetlify-plugin-sitrep.svg)](https://badge.fury.io/js/%40quarva%2Fnetlify-plugin-sitrep)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ed60732d-7271-432e-aada-70397b8f8ccf/deploy-status)](https://app.netlify.com/sites/netlify-build-sitrep/deploys) ![npm](https://img.shields.io/npm/v/@quarva/netlify-plugin-sitrep)
 
 A Netlify build plugin that injects build and deploy information into the DOM for debugging.
 

@@ -25,7 +25,7 @@
   "bugs": {
     "url": "https://github.com/quarva/netlify-plugin-sitrep/issues"
   },
-  "homepage": "https://github.com/quarva/netlify-plugin-sitrep#readme",
+  "homepage": "https://github.com/quarva/netlify-plugin-sitrep",
   "devDependencies": {
     "@netlify/build": "^3.3.5",
     "eslint": "^7.8.1",
