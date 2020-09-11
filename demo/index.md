@@ -14,6 +14,6 @@ Consider donating to [Public Knowledge](https://www.publicknowledge.org/donate/)
 
 ---
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ed60732d-7271-432e-aada-70397b8f8ccf/deploy-status)](https://app.netlify.com/sites/netlify-build-sitrep/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ed60732d-7271-432e-aada-70397b8f8ccf/deploy-status)](https://app.netlify.com/sites/netlify-build-sitrep/deploys) ![npm (scoped)](https://img.shields.io/npm/v/@quarva/netlify-plugin-sitrep)
 
 ##### Built by [Quarva](https://www.quarva.com/) using [11ty](https://www.11ty.dev)
