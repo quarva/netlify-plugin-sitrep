@@ -41,7 +41,7 @@ a#togglePPID {
     <div id="crt" style="display:none;">
       <div class="ray"><strong>Build ID: </strong><%= build_id %></div>
       <div class="ray"><strong>Context: </strong><%= context %></div>
-      <div class="ray"><strong>Commit: </strong>...<%= commit_ref %></div>
+      <div class="ray"><strong>Commit: </strong>...<%= commit_ref.substring(commit_ref.length - 10); %></div>
       <div class="ray"><strong>Deploy ID: </strong><%= deploy_id %></div>
     </div>
 </div>
