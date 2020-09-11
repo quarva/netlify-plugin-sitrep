@@ -46,6 +46,3 @@ package = "@quarva/netlify-plugin-sitrep"
     "verbose" = ""
     # If true, the plugin will write each step to the deploy log.
 ```
-
-## License
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FQuarva%2Fnetlify-plugin-sitrep.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FQuarva%2Fnetlify-plugin-sitrep?ref=badge_large)
