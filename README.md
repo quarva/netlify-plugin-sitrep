@@ -1,4 +1,5 @@
 # netlify-plugin-sitrep
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ed60732d-7271-432e-aada-70397b8f8ccf/deploy-status)](https://app.netlify.com/sites/netlify-build-sitrep/deploys) [![npm version](https://badge.fury.io/js/%40quarva%2Fnetlify-plugin-sitrep.svg)](https://badge.fury.io/js/%40quarva%2Fnetlify-plugin-sitrep)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FQuarva%2Fnetlify-plugin-sitrep.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FQuarva%2Fnetlify-plugin-sitrep?ref=badge_shield)
 

@@ -21,6 +21,7 @@ let authString = 'Bearer ' + authToken
 let baseURL = `https://api.netlify.com/api/v1/sites/${SITE_ID}/snippets`
 
 module.exports = {
+    
     // Note: we could do all of this in a single event handler (e.g. onSuccess) but
     // we split it up to save as much execution time as possible in the event of
     // an error or misconfiguration.
@@ -34,7 +35,7 @@ module.exports = {
         if (verbose) console.log('Verbose mode enabled');
 
         // Make sure the token has been set
-        // TODO this probably needs to be more robust
+        // Hopefully we get access to this via build in the future
         if (typeof authToken == 'undefined') {
           return failPlugin('The BUILD_SITREP_TOKEN environment var has not been set.');
         }
@@ -53,9 +54,7 @@ module.exports = {
 
         if (verbose) console.log('Building the tag UI...')
 
-        let COMMIT_REF_truncated = COMMIT_REF.substring(COMMIT_REF.length - 10);
-
-        let data = {build_id: BUILD_ID, context: CONTEXT, commit_ref: COMMIT_REF_truncated, deploy_id: DEPLOY_ID};
+        let data = {build_id: BUILD_ID, context: CONTEXT, commit_ref: COMMIT_REF, deploy_id: DEPLOY_ID};
         ejs.renderFile(__dirname + '/templates/template.ejs', data, function(err, data) {
             if (err) {  
                 return failPlugin ('Something went wrong when processing the display template: ' + err);
@@ -64,6 +63,10 @@ module.exports = {
             let renderToBase64 = new Buffer.from(data);
             let encodedRender = renderToBase64.toString('base64');
             
+            // This looks insane, but since snippet injection isn't exposed
+            // to build plugins, we have to use the API and pass data that
+            // can run without further processing. The only alternative is
+            // to modify the filesystem.
             let tagOpen =   '<script>' +
                             'window.onload = function() {' +
                             'var ifrm = document.createElement(\'iframe\');' +
@@ -127,11 +130,11 @@ module.exports = {
                 })
             })
 
-            if (status == 201) {
-                if (verbose) console.log('Snippet was added.');
-            } else if (status == 200) {
-                if (verbose) console.log('Snippet was updated.');
-            } else {
+            if (verbose && (status == 201)) {
+                console.log('Snippet was added.');
+            } else if (verbose && (status == 200)) {
+                console.log('Snippet was updated.');
+            } else if (status !== 200 && 201) {
                 return failPlugin('Snippet injection failed on an API error. Netlify said: ' + status + statusText);
             }
 
