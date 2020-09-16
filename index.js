@@ -1,68 +1,59 @@
-let ejs = require('ejs');
-
+const ejs = require('ejs');
 const fetch = require('node-fetch');
-const {
-    env: {
-        // Must be configured by the user as a Netlify build environment var
-        BUILD_SITREP_TOKEN,
-        // These are provided by Netlify and are read-only
-        CONTEXT,
-        SITE_ID,
-        COMMIT_REF,
-        DEPLOY_ID,
-        BUILD_ID,
-        DEPLOY_URL
-    }
-} = require('process')
+const env = require('./env');
 
 // Configure the required API vars
-let authToken = BUILD_SITREP_TOKEN;
+let authToken = env.BUILD_SITREP_TOKEN;
 let authString = 'Bearer ' + authToken
-let baseURL = `https://api.netlify.com/api/v1/sites/${SITE_ID}/snippets`
+let baseURL = `https://api.netlify.com/api/v1/sites/${env.SITE_ID}/snippets`
+
+const isValidString = (value)=> !!value&&value!=='';
+const Logger = {
+    info:console.log,
+    debug:(message)=>{
+        if(verbose){
+            console.debug(message);
+        }
+    },
+    error:console.error
+};
+const PRODUCTION = 'production';
 
 module.exports = {
-    
+
     // Note: we could do all of this in a single event handler (e.g. onSuccess) but
     // we split it up to save as much execution time as possible in the event of
     // an error or misconfiguration.
-    
-    onPreBuild: ({ inputs, utils: { build: { failPlugin } } }) => {
 
+    onPreBuild: ({ inputs, utils: { build: { failPlugin } } }) => {
         // Check inputs
         global.verbose = inputs.verbose;
         let allowProd = inputs.allow_prod;
-
-        if (verbose) console.log('Verbose mode enabled');
-
+        Logger.debug('Verbose mode enabled');
         // Make sure the token has been set
         // Hopefully we get access to this via build in the future
-        if (typeof authToken == 'undefined') {
+        if (isValidString(authToken)) {
           return failPlugin('The BUILD_SITREP_TOKEN environment var has not been set.');
         }
-
         // Make sure we don't run in disallowed contexts
-        if (verbose) console.log('Verifying allowable contexts...');
-        
-        if (!allowProd && (CONTEXT == 'production')) {
+        Logger.debug('Verifying allowable contexts...');
+        if (!allowProd && env.CONTEXT === PRODUCTION) {
             return failPlugin('Production debug is disabled. This can be changed in netlify.toml');
-        } else {
-            if (verbose) console.log('Production debug is enabled. This can be changed in netlify.toml');
         }
+        Logger.debug('Production debug is enabled. This can be changed in netlify.toml');
     },
-
     onBuild({ utils: { build: { failPlugin } } }) {
+        Logger.debug('Building the tag UI...');
 
-        if (verbose) console.log('Building the tag UI...')
-
-        let data = {build_id: BUILD_ID, context: CONTEXT, commit_ref: COMMIT_REF, deploy_id: DEPLOY_ID};
+        let data = {build_id: env.BUILD_ID, context: env.CONTEXT, commit_ref: env.COMMIT_REF, deploy_id: env.DEPLOY_ID};
         ejs.renderFile(__dirname + '/templates/template.ejs', data, function(err, data) {
-            if (err) {  
+            if (err) {
                 return failPlugin ('Something went wrong when processing the display template: ' + err);
             }
 
             let renderToBase64 = new Buffer.from(data);
             let encodedRender = renderToBase64.toString('base64');
-            
+
             // This looks insane, but since snippet injection isn't exposed
             // to build plugins, we have to use the API and pass data that
             // can run without further processing. The only alternative is
@@ -73,7 +64,7 @@ module.exports = {
                             'ifrm.setAttribute(\'id\', \'ifrm\');' +
                             'ifrm.setAttribute(\'style\', \'position: fixed; bottom: 0; right: 0; border: 0;\');' +
                             'document.body.appendChild(ifrm);'
-                
+
             let tagData =   'ifrm.setAttribute(\'src\', \'data:text/html;base64,' + encodedRender + '\');'
             let tagClose =    '}' +
                             '</script>'
@@ -89,7 +80,7 @@ module.exports = {
         if (verbose) console.log('Preparing snippet injection...');
 
         try {
-            
+
             if (verbose) console.log('Checking to see if a snippet already exists...');
 
             await fetch(baseURL, { method: 'GET', headers: {'Authorization': authString}})
@@ -101,7 +92,7 @@ module.exports = {
                 let findSnippet = json.filter(function(item) {
                     return item.title == "netlify-build-sitrep";
                 });
-                
+
                 // TODO: this is super sketchy, needs to be addressed
                 if (findSnippet === undefined || findSnippet.length == 0) {
                     if (verbose) console.log('Couldn\'t find an existing snippet.');
@@ -140,10 +131,10 @@ module.exports = {
 
             return show ({
               title: 'Sitrep injected successfully',
-              summary: 'You should be able to see it on ' + DEPLOY_URL,
-              text: 'Build ID: ' + BUILD_ID + ' | Site ID: ' + SITE_ID + ' | Commit: ' + COMMIT_REF + ' | Deploy ID: ' + DEPLOY_ID + '',
+              summary: 'You should be able to see it on ' + env.DEPLOY_URL,
+              text: 'Build ID: ' + env.BUILD_ID + ' | Site ID: ' + env.SITE_ID + ' | Commit: ' + env.COMMIT_REF + ' | Deploy ID: ' + env.DEPLOY_ID + '',
             })
-        } 
+        }
           catch (error) {
             return failBuild('Something catastrophic happened.', { error })
           }
