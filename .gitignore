@@ -7,3 +7,5 @@ node_modules
 /netlify.toml
 .fossa.yml
 scratchpad.txt
+
+.idea
