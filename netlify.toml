@@ -1,5 +1,5 @@
 [build]
-command = "echo 'default context'"
+command = "echo 'default context, check your configuration'"
 
 [[plugins]]
 # This plugin lets us load local plugins. Meta, I know.
@@ -10,6 +10,12 @@ package = "@netlify/plugin-local-install-core"
 [context.local]
 base = "./"
 command = "#"
+
+# Just a sanity check
+[context.branch_deploy]
+base = "/demo"
+publish = "_site"
+command = "eleventy"
 
 [context.production]
 base = "/demo"

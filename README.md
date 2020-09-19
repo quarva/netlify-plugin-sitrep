@@ -4,7 +4,7 @@
 
 A Netlify build plugin that injects build and deploy information into the DOM for debugging.
 
-[Live demo](https://netlify-build-sitrep.netlify.app)
+[Live demo](https://netlify-build-sitrep.quarva.dev)
 
 ![Demo](https://github.com/Quarva/quarva.github.io/blob/master/img/netlify-build-sitrep/demo.gif?raw=true)
 
@@ -17,15 +17,6 @@ The plugin accesses Netlify's postprocessing snippet injection using the Netlify
 1. Sign in to Netlify and navigate to User Settings → [Applications](https://app.netlify.com/user/applications)
 2. Generate a new personal access token
 3. Store that personal access token as a [build environment variable](https://docs.netlify.com/configure-builds/environment-variables) called `BUILD_SITREP_TOKEN` in the site(s) you want to use the plugin with.
-
-### Required environment variables for development
-
-| Variable Name |Description |
-|--- | --- |
-|BUILD_SITREP_TOKEN|Must be configured by the user|
-|SITE_ID|Must be configured by the user|
-|DEPLOY_ID|provided by Netlify, but can be configured by the user|
-|BUILD_ID|provided by Netlify, but can be configured by the user|
 
 ### Install
 
@@ -59,3 +50,16 @@ package = "@quarva/netlify-plugin-sitrep"
     "verbose" = ""
     # If true, the plugin will write each step to the deploy log.
 ```
+
+### Development
+
+## Required environment variables
+
+These variables need to be set locally. You can do this by temporarily assigning them with `netlify env` or by using `dotenv`.
+
+| Variable Name |Description |
+|--- | --- |
+|BUILD_SITREP_TOKEN|Must be configured by the user|
+|SITE_ID|Must be configured by the user|
+|DEPLOY_ID|provided by Netlify, but can be configured by the user|
+|BUILD_ID|provided by Netlify, but can be configured by the user|
