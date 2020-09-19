@@ -23,12 +23,9 @@ The plugin accesses Netlify's postprocessing snippet injection using the Netlify
 | Variable Name |Description |
 |--- | --- |
 |BUILD_SITREP_TOKEN|Must be configured by the user|
-|CONTEXT|provided by Netlify|
-|SITE_ID|provided by Netlify|
-|DEPLOY_ID|provided by Netlify|
-|BUILD_ID|provided by Netlify|
-
-Variables can be set with netlify env
+|SITE_ID|Must be configured by the user|
+|DEPLOY_ID|provided by Netlify, but can be configured by the user|
+|BUILD_ID|provided by Netlify, but can be configured by the user|
 
 ### Install
 
