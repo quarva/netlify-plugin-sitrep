@@ -3,10 +3,10 @@ const fetch = require('node-fetch');
 const env = require('./env');
 
 // Configure the required API vars
-const NETLIFY_APU_VERSION = 'v1';
+const NETLIFY_API_VERSION = 'v1';
 const authToken = env.BUILD_SITREP_TOKEN;
 const authString = 'Bearer ' + authToken
-const baseURL = `https://api.netlify.com/api/${NETLIFY_APU_VERSION}/sites/${env.SITE_ID}/snippets`
+const baseURL = `https://api.netlify.com/api/${NETLIFY_API_VERSION}/sites/${env.SITE_ID}/snippets`
 
 const isValidString = (value)=> !!value&&value!=='';
 const Logger = {
@@ -37,7 +37,7 @@ module.exports = {
          * Make sure the token has been set
          * Hopefully we get access to this via build in the future
          */
-        if (isValidString(authToken)) {
+        if (!isValidString(authToken)) {
           return failPlugin('The BUILD_SITREP_TOKEN environment var has not been set.');
         }
         /**
@@ -62,7 +62,7 @@ module.exports = {
              * This looks insane, but since snippet injection isn't exposed
              * to build plugins, we have to use the API and pass data that
              * can run without further processing. The only alternative is
-             * to modify the filesystem.
+             * to modify the filesystem, which we don't want.
              */
             const tagOpen =   '<script>' +
                             'window.onload = function() {' +
@@ -87,7 +87,8 @@ module.exports = {
                 fetchMethod:undefined
             };
             const response = await fetch(baseURL, { method: 'GET', headers: {'Authorization': authString}});
-            const snippets = await response.json().filter((item)=>(item.title === "netlify-build-sitrep"));
+            const json = await response.json();
+            const snippets = await json.filter((item)=>{return item.title == "netlify-build-sitrep";});
             if(!!snippets){
                 Logger.debug('Couldn\'t find an existing snippet.');
                 opts.extendedURL=baseURL;

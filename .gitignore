@@ -4,8 +4,9 @@ node_modules
 
 # Local Netlify folder
 .netlify
-/netlify.toml
 .fossa.yml
 scratchpad.txt
 
 .idea
+/local.env
+/demo/_site

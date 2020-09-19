@@ -1,0 +1,34 @@
+[build]
+command = "echo 'default context'"
+
+[[plugins]]
+# This plugin lets us load local plugins. Meta, I know.
+package = "@netlify/plugin-local-install-core"
+
+# Added for local development where want to build the
+# plugin but not the demo site
+[context.local]
+base = "./"
+command = "#"
+
+[context.production]
+base = "/demo"
+publish = "_site"
+command = "eleventy"
+
+# Netlify doesn't support context-dependent plugins yet, so for now
+# we manually switch during development and deploys
+
+# local dev
+# [[plugins]]
+#package = "."
+#  [plugins.inputs]
+#    "allow_prod" = "false"
+#    "verbose" = "true"
+
+# deploy
+ [[plugins]]
+ package = "../"
+  [plugins.inputs]  
+    "allow_prod" = "true"
+    "verbose" = ""

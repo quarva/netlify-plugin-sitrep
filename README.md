@@ -18,17 +18,17 @@ The plugin accesses Netlify's postprocessing snippet injection using the Netlify
 2. Generate a new personal access token
 3. Store that personal access token as a [build environment variable](https://docs.netlify.com/configure-builds/environment-variables) called `BUILD_SITREP_TOKEN` in the site(s) you want to use the plugin with.
 
-### Required environment variables
+### Required environment variables for development
 
 | Variable Name |Description |
 |--- | --- |
-|BUILD_SITREP_TOKEN|Must be configured by the user as a Netlify build environment|
+|BUILD_SITREP_TOKEN|Must be configured by the user|
 |CONTEXT|provided by Netlify|
 |SITE_ID|provided by Netlify|
-|COMMIT_REF|provided by Netlify|
 |DEPLOY_ID|provided by Netlify|
 |BUILD_ID|provided by Netlify|
-|DEPLOY_URL|provided by Netlify|
+
+Variables can be set with netlify env
 
 ### Install
 
