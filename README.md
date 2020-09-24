@@ -1,4 +1,4 @@
-# netlify-plugin-sitrep
+# Sitrep for Netlify
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/ed60732d-7271-432e-aada-70397b8f8ccf/deploy-status)](https://app.netlify.com/sites/netlify-build-sitrep/deploys) ![npm (scoped)](https://img.shields.io/npm/v/@quarva/netlify-plugin-sitrep) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FQuarva%2Fnetlify-plugin-sitrep.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FQuarva%2Fnetlify-plugin-sitrep?ref=badge_shield)
 
@@ -65,4 +65,4 @@ These variables need to be set locally. You can do this by temporarily assigning
 |BUILD_ID|provided by Netlify, but can be configured by the user|
 
 ---
-Contextual Redirects for Netlify is a foundry project from [Quarva](https://quarva.com/).
+Sitrep for Netlify is a foundry project from [Quarva](https://quarva.com/).
