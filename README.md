@@ -63,3 +63,6 @@ These variables need to be set locally. You can do this by temporarily assigning
 |SITE_ID|Must be configured by the user|
 |DEPLOY_ID|provided by Netlify, but can be configured by the user|
 |BUILD_ID|provided by Netlify, but can be configured by the user|
+
+---
+Contextual Redirects for Netlify is a foundry project from [Quarva](https://quarva.com/).
