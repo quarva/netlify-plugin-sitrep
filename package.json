@@ -29,7 +29,7 @@
   "devDependencies": {
     "@netlify/build": "4.4.0",
     "eslint": "7.10.0",
-    "eslint-plugin-spellcheck": "0.0.17"
+    "eslint-plugin-spellcheck": "0.0.20"
   },
   "engines": {
     "node": ">=10.22.0"
