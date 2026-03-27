@@ -35,7 +35,7 @@
     "node": ">=10.22.0"
   },
   "dependencies": {
-    "ejs": "^3.1.5",
+    "ejs": "^5.0.0",
     "node-fetch": "^2.6.1"
   },
   "files": [
